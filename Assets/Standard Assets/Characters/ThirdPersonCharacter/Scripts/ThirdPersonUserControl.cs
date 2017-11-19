@@ -2,20 +2,33 @@ using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
+ 
+
 namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof (ThirdPersonCharacter))]
     public class ThirdPersonUserControl : MonoBehaviour
     {
+		private Quaternion startQuat; 
+		private bool onRope;
         private ThirdPersonCharacter m_Character; // A reference to the ThirdPersonCharacter on the object
         private Transform m_Cam;                  // A reference to the main camera in the scenes transform
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
 
+		public void setOnRope(bool r){ 
+			onRope = r; 
+		}
+
+		public bool getOnRope(){
+			return onRope; 
+		}
         
         private void Start()
         {
+			startQuat = gameObject.transform.rotation; 
+			onRope = false; 
             // get the transform of the main camera
             if (Camera.main != null)
             {
@@ -35,6 +48,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
         private void Update()
         {
+			if (Input.GetKeyDown (KeyCode.Space) && onRope){
+				print ("jumping off");
+				onRope = false; 
+				gameObject.transform.rotation = startQuat; 
+			}
+
+			
             if (!m_Jump)
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
@@ -68,7 +88,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 #endif
 
             // pass all parameters to the character control script
-            m_Character.Move(m_Move, crouch, m_Jump);
+			if(!onRope){
+				m_Character.Move(m_Move, crouch, m_Jump);
+			}
             m_Jump = false;
         }
     }
