@@ -1,34 +1,11 @@
 fileFormatVersion: 2
-guid: e32dbf0dad6a643f0812482baafb9e11
-timeCreated: 1511062010
+guid: 79f57058935424e48b97673ad4677b15
+timeCreated: 1511240084
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
-  fileIDToRecycleName:
-    100000: pCone1
-    100002: pCube1
-    100004: //RootNode
-    100006: pSphere1
-    400000: pCone1
-    400002: pCube1
-    400004: //RootNode
-    400006: pSphere1
-    2300000: pCone1
-    2300002: pCube1
-    2300004: pSphere1
-    3300000: pCone1
-    3300002: pCube1
-    3300004: pSphere1
-    4300000: pCube1
-    4300002: pSphere1
-    4300004: pCone1
-    9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: dbf0c09df0f8344409b07e06b2b3a525, type: 2}
+  fileIDToRecycleName: {}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
